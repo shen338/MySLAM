@@ -1,3 +1,11 @@
+build
+\build*
+\lib
+\bin
+\.vs
+\.vscode
+
+
 # Prerequisites
 *.d
 
