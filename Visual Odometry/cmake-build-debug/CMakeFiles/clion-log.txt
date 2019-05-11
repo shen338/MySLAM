@@ -1,0 +1,31 @@
+/home/tong/Downloads/clion-2019.1.3/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/tong/MySLAM/Visual_Odometry
+CMake Warning (dev) at CMakeLists.txt:24 (find_package):
+  Policy CMP0074 is not set: find_package uses <PackageName>_ROOT variables.
+  Run "cmake --help-policy CMP0074" for policy details.  Use the cmake_policy
+  command to set the policy and suppress this warning.
+
+  CMake variable G2O_ROOT is set to:
+
+    /usr/local/include/g2o
+
+  For compatibility, CMake is ignoring the variable.
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+CMake Error at CMakeLists.txt:34 (add_subdirectory):
+  The source directory
+
+    /home/tong/MySLAM/Visual_Odometry/src
+
+  does not contain a CMakeLists.txt file.
+
+
+CMake Error at CMakeLists.txt:35 (add_subdirectory):
+  The source directory
+
+    /home/tong/MySLAM/Visual_Odometry/test
+
+  does not contain a CMakeLists.txt file.
+
+
+-- Configuring incomplete, errors occurred!
+See also "/home/tong/MySLAM/Visual_Odometry/cmake-build-debug/CMakeFiles/CMakeOutput.log".
