@@ -9,6 +9,8 @@
 
 #include <opencv2/features2d/features2d.hpp>
 
+
+// No concept of reference frame anymore, use partial map instead
 namespace myslam{
 
     class VisualOdometry{
@@ -23,15 +25,24 @@ namespace myslam{
 
         VOState state_;
         Map::Ptr map_;
+
         Frame::Ptr ref_;
         Frame::Ptr curr_;
 
-        cv::Ptr<cv::ORB> orb_;
-        vector<cv::Point3f> pts_3d_ref_;
-        vector<cv::KeyPoint> keypoints_curr_;
-        Mat descriptor_curr_;
-        Mat descriptor_ref_;
-        vector<cv::DMatch> feature_matches_;
+        // cv::Ptr<cv::ORB> orb_;
+        // vector<cv::Point3f> pts_3d_ref_;
+        // vector<cv::KeyPoint> keypoints_curr_;
+        // Mat descriptor_curr_;
+        // Mat descriptor_ref_;
+        // vector<cv::DMatch> feature_matches_;
+
+        cv::Ptr<cv::ORB> orb_;  
+        vector<cv::KeyPoint>    keypoints_curr_;    
+        Mat                     descriptors_curr_;
+
+        cv::FlannBasedMatcher matcher_flann_;
+        vector<MapPoint::Ptr> match_3dpts_;
+        vector<int>           match_2dkp_index_;
 
         SE3 T_c_r_estimated_;
         int num_inliers_;
@@ -46,6 +57,7 @@ namespace myslam{
 
         double key_frame_min_rot_;
         double key_frame_min_trans_;
+        double map_point_erase_ratio_;
 
     public:
         VisualOdometry();
@@ -60,11 +72,15 @@ namespace myslam{
         void featureMatching();
         void poseEstimationPnP();
         void poseEstimationPnPwithBA();
-        void setRef3DPoints();
 
         void addKeyFrame();
+        void addMapPoints();
         bool checkEstimatedPose();
         bool checkKeyFrame();
+
+        void optimizeMap();
+        double getViewAngle(Frame::Ptr frame, MapPoint::Ptr point);
+        
     };
 }
 
