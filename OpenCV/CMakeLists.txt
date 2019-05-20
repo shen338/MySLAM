@@ -13,3 +13,8 @@ add_executable(mymat mymat.cpp)
 target_link_libraries( mymat ${OpenCV_LIBS} )
 add_executable(myyaml yaml_config.cpp)
 target_link_libraries( myyaml ${OpenCV_LIBS} )
+add_executable(imgproc img_proc.cpp)
+target_link_libraries( imgproc ${OpenCV_LIBS} )
+
+add_executable(GUI gui.cpp)
+target_link_libraries( GUI ${OpenCV_LIBS} )

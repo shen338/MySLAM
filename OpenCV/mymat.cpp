@@ -91,7 +91,9 @@ int main(){
     cout << "Point (3D) = " << P3f << endl << endl;
     //! [out-point3]
 
-    Rect r(10, 10, 100, 100);   // Rect object. 
+    Rect r1(10, 10, 100, 100);   // Rect object. 
+    Rect r2(10, 10, 100, 100);
+    Rect r = r1 | r2;
     Mat crop;
     crop = A(r);
     rectangle(A, r, Scalar(0, 0, 255));
